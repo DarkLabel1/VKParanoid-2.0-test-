@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKParanoid 2.0 (test)", "VKParanoid 2.0 (test).csproj", "{130A53B8-085C-4915-818B-908549BA946C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{130A53B8-085C-4915-818B-908549BA946C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130A53B8-085C-4915-818B-908549BA946C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130A53B8-085C-4915-818B-908549BA946C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130A53B8-085C-4915-818B-908549BA946C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFA02710-0E21-4ED7-8E3A-83C8E1A45172}
+	EndGlobalSection
+EndGlobal
