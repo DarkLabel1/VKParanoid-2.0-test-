@@ -10,7 +10,7 @@ namespace VKParanoid_2._0__test_
 
         private void receiving_token_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://oauth.vk.com/authorize?client_id=6993599&scope=account,ads,apps,board,database,docs,fave,friends,gifts,groups,leads,likes,market,newsfeed,notes,notifications,pages,photos,places,polls,search,secure,stats,status,storage,users,utils,video,podcasts,stories,wall,orders&display=page&response_type=token&v=5.101");
+            System.Diagnostics.Process.Start("https://oauth.vk.com/authorize?client_id=6993599&scope=account,ads,apps,board,database,docs,fave,friends,gifts,groups,leads,likes,market,newsfeed,notes,notifications,pages,photos,places,polls,search,secure,stats,status,storage,users,utils,video,podcasts,stories,wall,orders,offline&display=page&response_type=token&v=5.101");
         }
         private void authorization_Click(object sender, EventArgs e)
         {
@@ -25,6 +25,12 @@ namespace VKParanoid_2._0__test_
                 f.Show();
                 this.Hide();
             }
+            System.IO.StreamWriter SaveToken = new System.IO.StreamWriter("Data\\data_token.txt");
+            {
+                string zapisy = Data.Token;
+                SaveToken.WriteLine(zapisy);
+            }
+            SaveToken.Close();
         }
     }
 }

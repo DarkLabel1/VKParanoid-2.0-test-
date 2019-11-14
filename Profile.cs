@@ -34,7 +34,11 @@ namespace VKParanoid_2._0__test_
             foreach (string line in allLinesfollowers)
                 listBox4.Items.Add(line);
 
-            pictureBox2.ImageLocation = Data.photo_200;
+            string pathToFileLikes = "Data\\data_likers.txt";
+            string[] allLineslikes = File.ReadAllLines(pathToFileLikes, Encoding.UTF8);
+            foreach (string line in allLineslikes)
+                listBox1.Items.Add(line);
+            pictureBox2.ImageLocation = Data.photo_200_orig;
         }
     }
 }

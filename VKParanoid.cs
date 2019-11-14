@@ -1,17 +1,17 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using xNet;
 using System.Threading;
-using System.IO;
-using System.Text;
+using System.Linq;
 
 namespace VKParanoid_2._0__test_
 {
     public partial class VKParanoid : Form
     {
         public VKParanoid()
-        {InitializeComponent();}
+        { InitializeComponent(); }
         private void Search_Click(object sender, EventArgs e)
         {
             //Переменная запроса к API VKontakte
@@ -19,87 +19,45 @@ namespace VKParanoid_2._0__test_
             //Очистка полей, если они заполненны.
             listBox1.Items.Clear();
             listBox2.Items.Clear();
-            Data.id = textBox1.Text;
-            //Запрос к API
-            string users_get = request.Get("https://api.vk.com/method/users.get?user_ids="
-                                           + Data.id
-                                           + "&access_token="
-                                           + Data.Token
-                                           + "&v=5.101"
-                                           + "&fields=photo_200, photo_200_orig"
-                                          ).ToString();
+            Data.id = Convert.ToInt32(textBox1.Text);
+            //Users_Get
+            Main.users_get();
             //Name, surname, photo (Имя, фамилия и фото)
-            dynamic json = JObject.Parse(users_get);
-            string name = json["response"][0]["first_name"];
-            string surname = json["response"][0]["last_name"];
-            string photo = json["response"][0]["photo_200"];
-            Data.photo_200 = json["response"][0]["photo_200_orig"];
-            pictureBox1.ImageLocation = photo;
-            Name_Suname.Text = name + " " + surname;
+            pictureBox1.ImageLocation = Data.photo_200_orig;
+            Name_Suname.Text = Data.name + " " + Data.surname;
             //Kol-vo friends (Кол-во друзей)
-                //Запрос к API
-            string friends_get = request.Get("https://api.vk.com/method/friends.get?user_id="
-                                         + Data.id
-                                         + "&access_token="
-                                         + Data.Token
-                                         + "&v=5.101"
-                                         + "&fields=nickname").ToString();
-            dynamic json_1 = JObject.Parse(friends_get);
-            int count_0 = json_1["response"]["count"];
-            label4.Text = "[" + Convert.ToString(count_0) + "]";
-            int count_itog_0 = count_0 - 1;
-            for (int i = 0; i <= count_itog_0; i++)
+            Main.friends_get();
+            label4.Text = "[" + Convert.ToString(Data.count0) + "]";
+            for (int i = 0; i <= Data.count_itog_0; i++)
             {
-                if (json_1["response"]["items"][i] != null)
+                if (Data.json_2["response"]["items"][i] != null)
                 {
-                    string id_1 = json_1["response"]["items"][i]["id"];
-                    string name_1 = json_1["response"]["items"][i]["first_name"];
-                    string surname_1 = json_1["response"]["items"][i]["last_name"];
+                    string id_1 = Data.json_2["response"]["items"][i]["id"];
+                    string name_1 = Data.json_2["response"]["items"][i]["first_name"];
+                    string surname_1 = Data.json_2["response"]["items"][i]["last_name"];
                     listBox1.Items.Insert(i, id_1 + " " + name_1 + " " + surname_1);
                 }
                 else{}
             }
             //Kol-vo followers (Кол-во подписчиков)
-                //Запрос к API
-            string kol_vo = request.Get("https://api.vk.com/method/users.getFollowers?user_id="
-                                                            + Data.id
-                                                            + "&access_token="
-                                                            + Data.Token
-                                                            + "&v=5.101"
-                                                            + "&fields=photo_200").ToString();
-            dynamic json_2 = JObject.Parse(kol_vo);
-            int kol = json_2["response"]["count"];
-            label5.Text = "[" + Convert.ToString(kol) + "]";
-            int kol_itog = kol - 1;
-            int offset = 0;
-            while (offset < kol_itog)
+            Main.Kol_vo_followers();
+            label5.Text = "[" + Convert.ToString(Data.count1) + "]";
+            Data.offset_users_getFollowers = 0;
+            while (Data.offset_users_getFollowers < Data.count_itog_1)
             {
                 Thread.Sleep(100);
                 //Запрос к API
-                string users_getFollowers = request.Get("https://api.vk.com/method/users.getFollowers?user_id="
-                                                        + Data.id
-                                                        + "&access_token="
-                                                        + Data.Token
-                                                        + "&v=5.101"
-                                                        + "&offset="
-                                                        + offset
-                                                        + "&count="
-                                                        + 1000
-                                                        + "&fields=photo_200").ToString();
-                Data.json_3 = JObject.Parse(users_getFollowers);
-                int count_1 = Data.json_3["response"]["count"];
-                Data.count_itog_1 = count_1 - 1;
-                offset += 1000;
+                Main.users_getFollowers();
                 try
                 {
                     int B = 0;
-                    for (int A = 0; A <= Data.count_itog_1; A++)
+                    for (int A = 0; A <= Data.count_itog_2; A++)
                     {
-                        if (Data.json_3["response"]["items"][B] != null)
+                        if (Data.json_4["response"]["items"][B] != null)
                         {
-                            string id_2 = Data.json_3["response"]["items"][B]["id"];
-                            string name_2 = Data.json_3["response"]["items"][B]["first_name"];
-                            string surname_2 = Data.json_3["response"]["items"][B]["last_name"];
+                            string id_2 = Data.json_4["response"]["items"][B]["id"];
+                            string name_2 = Data.json_4["response"]["items"][B]["first_name"];
+                            string surname_2 = Data.json_4["response"]["items"][B]["last_name"];
                             listBox2.Items.Insert(B, id_2 + " " + name_2 + " " + surname_2);
                             B++;
                         }
@@ -124,7 +82,58 @@ namespace VKParanoid_2._0__test_
             }
             SaveFileFollowers.Close();
 
-            richTextBox1.Text = " Count listBox1: " + listBox1.Items.Count + " Count listBox2: " + listBox2.Items.Count; 
+            //Лайкеры ВК + WallPostId
+            Main.wall_get();
+            int C = 0;
+            while (C < 6)
+            {
+                int count = Data.json_6["response"]["count"];
+                for (int i = 0; i <= count; i++)
+                {
+                    Data.wall_id_post = Data.json_6["response"]["items"][i]["id"];
+                    Thread.Sleep(100);
+                    Main.likesGetList();
+                    Data.offset_likes = 0;
+                    while (Data.offset_likes < Data.count_itog_5)
+                    {
+                        Thread.Sleep(100);
+                        string likes_getList = request.Get("https://api.vk.com/method/likes.getList?type="
+                                                                            + "post"
+                                                                            + "&owner_id="
+                                                                            + Data.id
+                                                                            + "&item_id="
+                                                                            + Data.wall_id_post
+                                                                            + "&friends_only=0"
+                                                                            + "&extended=1"
+                                                                            + "&offset="
+                                                                            + Data.offset_likes
+                                                                            + "&access_token="
+                                                                            + Data.Token
+                                                                            + "&v=5.103"
+                                                                            ).ToString();
+                        Data.json_8 = JObject.Parse(likes_getList);
+                        Data.offset_likes += 100;
+                        for (int b = 0; b <= Data.count_itog_5; b++)
+                        {
+                            if (Data.json_8["response"]["items"][b] != null)
+                            {
+                                string id_likes = Data.json_7["response"]["items"][b]["id"];
+                                string name_likes = Data.json_7["response"]["items"][b]["first_name"];
+                                string surname_likes = Data.json_7["response"]["items"][b]["last_name"];
+                                string full = id_likes + " " + name_likes + " " + surname_likes;
+                                System.IO.StreamWriter SaveFileLikes = new System.IO.StreamWriter("Data\\data_likes.txt", true);
+                                SaveFileLikes.WriteLine(full);
+                                SaveFileLikes.Close();
+                            }
+                            else {}
+                        }
+                    }
+                    C += 1;
+                    File.WriteAllLines("Data\\data_likers.txt", File.ReadAllLines("Data\\data_likes.txt").Distinct().ToArray());
+                }
+            }
+            listBox3.Items.AddRange(File.ReadAllLines("Data\\data_likers.txt"));
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -136,6 +145,11 @@ namespace VKParanoid_2._0__test_
         {
             Profile f = new Profile();
             f.Show();
+        }
+
+        private void VKParanoid_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

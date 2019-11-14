@@ -36,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,11 +112,32 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Подписчики:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(455, 238);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 17);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Лайкеры:";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(458, 260);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(217, 436);
+            this.listBox1.TabIndex = 18;
+            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 754);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -142,5 +165,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
