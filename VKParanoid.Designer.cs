@@ -45,6 +45,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,7 +155,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(618, 50);
+            this.label5.Location = new System.Drawing.Point(618, 53);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 18);
             this.label5.TabIndex = 11;
@@ -200,11 +201,19 @@
             this.listBox3.Size = new System.Drawing.Size(211, 196);
             this.listBox3.TabIndex = 15;
             // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(816, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(129, 18);
+            this.label7.TabIndex = 16;
+            // 
             // VKParanoid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 655);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button2);
@@ -248,5 +257,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label7;
     }
 }
