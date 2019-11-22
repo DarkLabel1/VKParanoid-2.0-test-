@@ -14,16 +14,16 @@ namespace VKParanoid_2._0__test_
         }
         private void authorization_Click(object sender, EventArgs e)
         {
-            if (access_token.Text == "")
-            {
-                MessageBox.Show("Не введен токен!", "Ошибка");
-            }
-            else
+            if (access_token.Text.Length > 80)
             {
                 Data.Token = access_token.Text;
                 VKParanoid f = new VKParanoid();
                 f.Show();
                 this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Не введен токен!", "Ошибка");
             }
             System.IO.StreamWriter SaveToken = new System.IO.StreamWriter("Data\\data_token.txt");
             {
@@ -31,6 +31,11 @@ namespace VKParanoid_2._0__test_
                 SaveToken.WriteLine(zapisy);
             }
             SaveToken.Close();
+        }
+
+        private void Autho_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

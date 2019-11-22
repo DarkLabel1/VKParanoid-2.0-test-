@@ -87,6 +87,7 @@
             this.Controls.Add(this.access_token);
             this.Name = "Autho";
             this.Text = "VKParanoid 2.0 ";
+            this.Load += new System.EventHandler(this.Autho_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

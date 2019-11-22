@@ -166,7 +166,13 @@ namespace VKParanoid_2._0__test_
 
         private void VKParanoid_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Users f = new Users();
+            f.Show();
         }
     }
 }

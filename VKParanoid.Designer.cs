@@ -46,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +132,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 425);
+            this.richTextBox1.Location = new System.Drawing.Point(16, 425);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(1020, 218);
             this.richTextBox1.TabIndex = 8;
@@ -163,10 +164,10 @@
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(12, 280);
+            this.button1.Location = new System.Drawing.Point(104, 281);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 40);
+            this.button1.Size = new System.Drawing.Size(49, 41);
             this.button1.TabIndex = 12;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
@@ -174,10 +175,10 @@
             // button2
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(62, 280);
+            this.button2.Location = new System.Drawing.Point(104, 326);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(44, 40);
+            this.button2.Size = new System.Drawing.Size(49, 41);
             this.button2.TabIndex = 13;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -208,11 +209,22 @@
             this.label7.Size = new System.Drawing.Size(129, 18);
             this.label7.TabIndex = 16;
             // 
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(12, 281);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(88, 86);
+            this.button3.TabIndex = 17;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
             // VKParanoid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 655);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.label6);
@@ -258,5 +270,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button3;
     }
 }
