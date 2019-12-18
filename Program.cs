@@ -16,7 +16,7 @@ namespace VKParanoid_2._0__test_
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Autho());
+            Application.Run(new Menu());
         }
     }
 }
